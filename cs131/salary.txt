@@ -1,0 +1,35 @@
+Instructions
+
+Salary
+Given the base salary, bonus per carpet sold, number of carpets sold,
+percent of commission, and the total monthly sales by the user, 
+this program will calculate the monthly salary for a salesperson at
+Abduhl's Flying Carpets.
+
+Input
+
+What is the base salary? base_salary
+What is the bonus per carpet? carpet_bonus
+What is the number of carpets sold? carpet_quantity
+What is the percentage of commission? commission
+What is the total monthly sales? monthly_sales
+
+Calculate
+
+bonus_salary = carpet_bonus * carpet_quantity
+total_commission = monthly_sales * commission / 100
+total_salary = base_salary + bonus_salary + total_commission
+
+Output
+
+Base salary            $ _base_salary_
+
+Bonus per carpet       $ _carpet_bonus_
+Quantity of carpets      _carpet_quantity_
+Total bonus salary     $ _bonus_salary_
+
+Total sales            $ _monthly_sales_
+Commission rate             _commission_%
+Total commission       $ _total_commission_
+
+Total monthly salary   $ _total_salary_

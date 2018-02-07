@@ -1,0 +1,44 @@
+Text Analysis
+Description
+You are to write a menu-driven program that analyzes a text file and allows the user to view various reports of 
+the content. Possible choices for the user should include
+ Identify a file to analyze
+ Display a list of unique words and their frequency in alphabetic order
+ Display a list of unique words and their frequency in order by frequency
+ Display a list of unique characters and their frequency in alphabetic order
+ Display a list of unique characters and their frequency in order by frequency
+ Display a summary of the characters in a table
+ The number of sentences
+ The number of unique characterso The total number of characters
+ Display a summary of the words in a table
+ The length of the shortest word
+ The length of the longest word
+ The average length of a word
+ The number of unique words
+ The total number of words
+ Display a summary of the lines in a table
+ The length of the shortest line
+ The length of the longest line
+ The average length of a line
+ The total number of lines
+Discussion
+ The file may be read only once.
+ Only one copy of the information from the file may be stored in the program.
+ For unique characters, uppercase is considered separate from lowercase. 'A' and 'a' are different.
+ A sentence is marked by a period, question mark or exclamation point.
+ A word is defined as one or more consecutive, non-space characters.
+ A word should be converted to a standardized format.
+ A word should be converted to all lowercase, so that "The" and "the" are treated as the same word.
+ All leading and trailing punctuation should be removed from a word. For example,
+"I can't!", he said.
+ i
+ can't
+ he
+ said
+ Print words and frequencies in 4 groups per line, with values ascending in columns, not across the row.
+ Print characters and frequencies in 8 groups per line, with values ascending in columns, not across the row.
+ Display descriptive column headings and labels. Values in columns should be aligned normally.
+ Use good programming technique and style (e.g., descriptive names, comments for functions and variables, 
+appropriate data types, each logical section in its own function, efficient code, etc.).
+Hand In
+Hand in the program and a demonstration electronically. Text files will be provided for testing.

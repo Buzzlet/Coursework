@@ -1,0 +1,118 @@
+<html>
+ <head>
+  <title>Calculations</title>
+  <script type="text/javascript">
+
+  //Class:   cs131
+  //date:    12/5/14
+  //Author:  Joel Ristvedt
+
+  //Description: This program receives two numbers then adds them,
+  //subtracts them, multiplies them, and divides them and displays
+  //those equations. 
+
+
+  function Create_Equations()
+  //Gets numbers from the user, then continues to do the calculations
+  //and print them below.
+  {
+   var num1; // User's first number
+   var num2; // User's second number
+   var sum; // Sum of user's numbers
+   var difference;// difference of user's numbers
+   var product; // product of user's numbers
+   var quotient; // quotient of user's numbers
+   num1 = Number(document.getElementById("num1").value);
+   num2 = Number(document.getElementById("num2").value);
+   sum = Add_Nums(num1, num2);
+   difference = Subtract_Nums(num1, num2);
+   product = Multiply_Nums(num1, num2);
+   quotient = Divide_Nums(num1, num2);
+   Print_Equations(num1, num2, sum, difference, product, quotient);
+  }
+  function Add_Nums(num1, num2)
+  //Determines the sum of the two numbers
+  {
+   var sum; // The result of adding the numbers together
+   sum = num1 + num2;
+   return sum;
+  }
+  function Subtract_Nums(num1, num2)
+  //Determines the difference of the two numbers
+  {
+   var difference; //The result of subtracting the numbers
+   difference = num1 - num2
+   return difference;
+  }
+  function Multiply_Nums(num1, num2)
+  //Determines the product of the two numbers
+  {
+   var product; //The result of multiplying the numbers together
+   product = num1 * num2
+   return product;
+  }
+  function Divide_Nums(num1, num2)
+  //Determines the quotient of the first number divided by the second
+  {
+   var quotient; //The result of dividing the numbers
+   quotient = num1 / num2
+   return quotient;
+  }
+  function Print_Equations(num1, num2, sum, difference, product, quotient)
+  //Formats the equations and prints them below
+  {
+   var equation1; // The complete addition equation
+   var equation2; // The complete subtraction equation
+   var equation3; // The complete multiplication equation
+   var equation4; // The complete division equation
+   equation1 = num1 + " + " + num2 + " = " + sum;
+   equation2 = num1 + " - " + num2 + " = " + difference;
+   equation3 = num1 + " * " + num2 + " = " + product;
+   equation4 = num1 + " / " + num2 + " = " + quotient;
+   document.getElementById("equation1").innerHTML = equation1;
+   document.getElementById("equation2").innerHTML = equation2;
+   document.getElementById("equation3").innerHTML = equation3;
+   document.getElementById("equation4").innerHTML = equation4;
+  }
+  </scipt>
+ </head>
+ <body>
+ <p>
+  <b><font face="Helvetica,Arial,sans-serif">Calculations</font></b><br />
+  Enter two numbers and click the button to see the addition equation, 
+  difference equation, multiplication equation, and division equation.
+ </p>
+ <table>
+  <tr>
+   <td>What is the first number?</td>
+   <td><input type="text" id="num1"></td>
+  </tr>
+  <tr>
+   <td>What is the second number?</td>
+   <td><input type="text" id="num2"></td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    <center>
+    <button type="button" onclick="Create_Equations()">Calculate</button>
+    </center>
+   </td>
+  </tr>
+  <tr>
+   <td>Equations:</td>
+  </tr>
+  <tr>
+   <td><p id="equation1"></p></td>
+  </tr>
+  <tr>
+   <td><p id="equation2"></p></td>
+  </tr>
+  <tr>
+   <td><p id="equation3"></p></td>
+  </tr>
+  <tr>
+   <td><p id="equation4"></p></td>
+  </tr>
+ </table>
+ </body>
+</html>

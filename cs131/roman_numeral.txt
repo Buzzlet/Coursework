@@ -1,0 +1,51 @@
+Roman Numeral
+This program will accept a number of up to 3999 (Ex. formatted like 365)
+from the user and return what the Roman numeral equivalent is for the number.
+
+
+Input
+What is the number (1-3999)? _number_
+
+
+Calculate
+
+two_right_digits = number % 100
+two_left_digits = number // 100
+ones_digit = two_right_digits % 10
+tens_digit = two_right_digits // 10
+hundreds_digit = two_left_digits % 10
+thousands_digit = two_left_digits // 10
+
+first, we'll determine what roman numeral will represent the ones digit
+if ones_digit <= 3, then ones_digit_string = 'I' * ones_digit
+if ones_digit == 4, then ones_digit_string = 'IV'
+if ones_digit == 5, then ones_digit_string = 'V'
+if ones_digit >= 6 and ones_digit <= 8, then  ones_digit_string =
+                                                'V' + ('I' * (ones_digit - 5))
+if ones_digit == 9, then ones_digit_string = 'IX'
+
+next, we'll determine what roman numeral will represent the tens digit
+if tens_digit <= 3, then tens_digit_string = 'X' * tens_digit
+if tens_digit == 4, then tens_digit_string = 'XL'
+if tens_digit == 5, then tens_digit_string = 'L'
+if tens_digit >= 6 and tens_digit <= 8, then tens_digit_string =
+                                               'L' + ('X' * (tens_digit - 5))
+if tens_digit == 9, then tens_digit_string = 'XC'
+
+next, we'll determine what roman numeral will represent the hundreds digit
+if hundreds_digit <= 3, then hundreds_digit_string = 'C' * hundreds_digit
+if hundreds_digit == 4, then hundreds_digit_string = 'CD'
+if hundreds_digit == 5, then hundreds_digit_string = 'D'
+if hundreds_digit >= 6 and hundreds_digit <= 8, then hundreds_digit_string =
+                                          'D' + ('C' * (hundreds_digit - 5))
+if hundreds_digit == 9, then hundreds_digit_string = 'CM'
+
+finally, because the highest place the fourth digit can go to is 3..
+thousands_digit_string = 'M' * thousands_digit
+
+
+Output
+
+The number _number_ is equivalent to _thousands_digit_string_ +
+_hundreds_digit_string_ + _tens_digit_string_ + _ones_digit_string_
+in Roman numeral form. 

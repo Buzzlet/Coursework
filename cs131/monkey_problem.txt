@@ -1,0 +1,67 @@
+Monkey Problem
+This program will solve for the number of coconuts in the monkey problem over
+a range of sailors selected by the user. The program will give the user the
+option of printing all of the solutions for the range of sailors. Regardless
+of if the user wants to see each solution, they will be told the total number
+of solutions found, the amount of wall clock time to find the solutions and
+the amount of CPU time it took to complete the search.
+
+
+Input
+
+What range of coconuts would you like to test (lower number - higher number)?
+coconut_test_string / coconut_test_limit
+
+How many sailors are on the island?
+sailors
+
+Do you want to see the successful results?
+answer
+
+
+Calculations
+
+start the timers
+
+if coconut_test < coconut_test_limit, then
+    start off by setting the coconuts_in_pile to the current coconut_test
+    set leftover_coconuts to the number of coconuts_in_pile % sailors
+    set coconuts_taken to coconuts_in_pile // sailors
+    if the sailor_count < sailors and none of the test hasn't failed for 
+       other sailors, then
+        if leftover_coconuts == sailor_count, then
+            take the coconuts_taken and the leftover_coconuts thrown to the
+            monkey from the pile
+            update the coconuts_taken from the new amount of coconuts_in_pile
+            to coconuts_in_pile // sailors
+            update the leftover_leftover coconuts to be given to the monkey
+            by the next sailor to coconuts_in_pile % sailors
+        otherwise,
+            the test for this number of coconuts fails 
+        by default, if it reaches this point, the test will not have failed,
+        so we should check the next sailor until we run out of sailors to 
+        check (sailor_count += 1)
+    for the last sailor, we don't do the actual calculation for the new 
+    amount of coconuts_in_pile, so we set it equal to:
+    coconuts_in_pile -= (leftover_coconuts + coconuts_taken)
+    if the test hasn't failed and he amount of leftover_coconuts == 0 and
+       there would be one leftover coconut if they divided the pile equally
+       (coconuts_in_pile % sailors == 1), then the coconut_test works!
+        if the user wanted to print, then
+            print the current coconut_test
+        update the counter on how many results have worked (results += 1)
+    we're finished with this coconut_test, so we can move onto the next
+    test (coconut_test += 1)
+
+end the timers
+
+change in time = timer_start - timer_end
+
+Output
+
+(there will be a long column of results here if the user said he/she wants it)
+
+There are _results_ results within the range _coconut_test_string_ -
+_coconut_test_limit_
+CPU secs: _cpu_secs_
+Elapsed secs: _wall_secs_

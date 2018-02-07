@@ -1,0 +1,42 @@
+
+Cross_Country
+This program will accept the runners number, the elapsed time for the first 
+mile, second mile, and the final elapsed time. Using these timestamps, the
+program will determine the amount of time each leg of the race took to 
+complete. The times should be entered in the format mm:ss.ms. 
+(Ex. 12:32.93)
+
+Input
+What is the runner's number? 
+_runner_number_
+What is the elapsed time at mile 1? 
+_mile1_mins_:_mile1_seconds_ 
+What is the elapsed time at mile 2? 
+_mile2_mins_:_mile2_seconds_ 
+What is the elapsed time at the finish line? 
+_mile3_mins_:_mile3_seconds_
+
+Calculate
+mile1_elapsed_seconds = (60 * mile1_mins) + mile1_seconds
+mile2_elapsed_seconds = (60 * mile2_mins) + mile2_seconds
+mile3_elapsed_seconds = (60 * mile3_mins) + mile3_seconds
+seconds_for_mile2 = mile2_elapsed_seconds - total_mile1_seconds
+seconds_for_mile3 = mile3_elapsed_seconds - total_mile2_seconds
+split2_mins = seconds_for_mile2 // 60
+split3_mins = seconds_for_mile3 // 60
+split2_seconds = seconds_for_mile2 % 60
+split3_seconds = seconds_for_mile3 % 60
+
+Output
+
+Times for runner _runner_number_
+
+Elapsed Times
+Mile 1         mile1_mins:mile1_seconds
+Mile 2         mile2_mins:mile2_seconds
+Finish         mile3_mins:mile2_seconds
+
+Split Times
+Split 1        mile1_mins:mile1_seconds
+Split 2        split2_mins:split2_seconds
+Split 3        split3_mins:split3_seconds

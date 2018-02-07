@@ -1,0 +1,197 @@
+<html>
+ <head>
+ <title>Monkey Problem</title>
+  <script type="text/javascript">
+
+   /*This functions finds working solutions to the monkey problem
+     and fills a table of results.*/
+   Function Find_Solutions()
+   /* coconut_test - the lowest number for checking for solutions
+      coconut_test_limit - the highest number for checking solution
+      sailors - the number of sailors put on the forsaken island
+      print_results - the boolean pertaining to whether the user wants to see
+                      the results
+      sailor_count - the number of sailors that have taken their share
+      plausible - boolean pertaining to whether the coconut value is a 
+                  possible solution
+      leftover_coconuts -coconuts remaining after every secret devision
+      coconuts_taken - number taken during every secret division
+      results - the number of solutions found
+   */
+   { 
+     if(document.getElementById("print_results").checked)
+     {
+       document.getElementById("solution_table").innerHTML = 
+       "<tr>
+         <td><b>Count</b></td>
+         <td><b>Solution</b></td>
+        </tr><br />"
+     }
+     else
+     {
+       document.getElementById("solution_table").innerHTML = ""
+     }
+     var coconut_test = Number(document.getElementById("coconut_test").value);
+     var coconut_test_limit = 
+     Number(document.getElementById("coconut_test_limit").value);
+     var sailors = Number(document.getElementById("sailors").value);
+     start_time = (new Date).getTime();
+     var results = 0;
+
+     while(coconut_test < coconut_test_limit)
+     {
+       var sailor_count = 1;
+       var plausible = true;
+       var coconuts_in_pile = coconut_test
+       var coconuts_taken = Math.floor(coconuts_in_pile/sailors);
+       var leftover_coconuts = coconuts_in_pile % sailors;
+       while(sailor_count < sailors && plausible == true)
+       {
+         if(leftover_coconuts == sailor_count)
+         {
+           coconuts_in_pile -= (leftover_coconuts + coconuts_taken);
+           coconuts_taken = Math.floor(coconuts_in_pile/sailors);
+           leftover_coconuts = coconuts_in_pile % sailors;
+         }
+         else
+         {
+           plausible = false;
+         }
+         sailor_count += 1;
+       }
+       coconuts_in_pile -= (leftover_coconuts + coconuts_taken);
+       if(plausible && leftover_coconuts == 0 &&
+          coconuts_in_pile % sailors == 1)
+       {
+         results += 1;
+         if(document.getElementById("print_results").checked)
+         {
+           document.getElementById("solution_table").innerHTML += 
+           ("<tr><td>"+results+":</td><td>"+coconut_test+"</td></tr><br />")
+         }
+       }
+       coconut_test += 1;
+     }
+     stop_time = (new Date).getTime();
+     total_msec = stop_time - start_time;
+     time_str = Msec2Hms(total_msec);
+
+
+     document.getElementById("solutions_msg").innerHTML = 
+     "<b>Summary</b><br />There are " + results + 
+     " results within the range of " + 
+     document.getElementById("coconut_test").value + 
+     "-" + coconut_test_limit + "."
+
+     document.getElementById("elapsed_time_msg").innerHTML =
+     "Elapsed Time: " + time_str
+   }
+
+   // This function converts total milliseconds to hh:mm:ss.ddd format
+   // with leading zeros and returns the formatted time. It is assumed
+   // that the total milliseconds is less than 24 hours.
+   // msec – total milliseconds
+   function Msec2Hms(msec)
+   {
+     var hours; // Whole hours from the milliseconds
+     var mins; // Whole minutes from the milliseconds
+     var secs; // Remaining seconds with decimal places
+     var formatted; // Formatted time as hh:mm:ss.ddd
+     secs = Math.floor(msec / 1000);
+     mins = Math.floor(secs / 60);
+     hours = Math.floor(mins / 60);
+     secs = secs % 60 + ((msec % 1000) / 1000); // Tack on milliseconds
+     mins = mins % 60;
+     formatted = Leading_Zero(hours) + ":" + Leading_Zero(mins) + ":"
+     + Leading_Zero(secs);
+     return(formatted);
+   }
+
+   // This simple function checks the given number, appends a leading
+   // zero if it is less than 10 and returns the result. This ensures
+   // that numbers are always at least two digits long.
+   // num – any positive number, with or without decimal places
+   function Leading_Zero(num)
+   {
+     if (num < 10)
+     num = "0" + num;
+     return(num);
+   }
+
+  </script>
+ </head>
+ <body>
+ 
+<p><b><font face="Arial">The Monkey Problem</font></b><br />
+ 
+Five sailors are shipwrecked on an island. Fearing a long stay before rescue,
+they gather together a large pile of coconuts as a source of nourishment. 
+Night falls before they are able to divide the coconuts among themselves.
+So, the sailors agree to go to sleep and divide the pile of coconuts in the 
+morning. During the night, one of the sailors wakes up and decides to make 
+sure that he gets his fair share of coconuts. He divides the pile into five 
+equal piles, one for each sailor, with one coconut left over. He hides his 
+pile, pushes the other four piles together and tosses the extra coconut to a
+monkey that is watching him. A little while later, a second sailor wakes up 
+and does the same dividing and hiding. He ends up with two extra coconuts, 
+which he tosses to the monkey. As the night goes by, the other sailors wake 
+up in turn to divide the pile of coconuts and hide their shares, each time 
+giving any extra coconuts to the monkey. The third sailor has three coconuts 
+left over, the fourth sailor has four coconuts left over but the fifth sailor 
+has no coconuts left over. This works out well, since by the time the fifth 
+sailor awakens to divide the pile, it is fairly late and the monkey has gone 
+to bed. In the light of day, the pile of coconuts is much smaller, but no one 
+points this out since each thinks he is responsible. The sailors do one last 
+official division in which each sailor receives the same number of coconuts 
+with one coconut left over. The sailors agree to give the extra coconut to 
+the monkey for breakfast. Each sailor then takes his official pile and 
+settles in to wait for rescue.
+</p>
+
+ <p><b><font face="Arial,Helvetica,sans-serif">The Solution</font></b><br />
+This program finds out many coconuts could have been in the original pile 
+with a given number of sailors and a range to search through.<br /></p>
+
+  <table>
+   <tr>
+    <td>At what number would you like to start searching for solutions?</td>
+    <td><input type="text" id="coconut_test"></td>
+   </tr>
+
+   <tr>
+    <td>Until what number would you like to search for solutions?</td>
+    <td><input type="text" id="coconut_test_limit"></td>
+   </tr>
+
+   <tr>
+    <td>How many sailors are on the island?</td>
+    <td><input type="text" id="sailors"></td>
+   </tr>
+
+   <tr>
+    <td>Show results</td>
+    <td><input type="checkbox" id="print_results"></td>
+   </tr>
+
+   <tr>
+    <td colspan="2">
+    <center>
+     <button type="button" onclick="Find_Solutions()">Find Solutions</button>
+    </center>
+    </td>
+   </tr>
+  </table><br />
+
+  <table id="solution_table"></table>
+
+  <table>
+   <tr>
+    <p id="solutions_msg"></p>
+   </tr>
+   <tr>
+    <td id="elapsed_time_msg"></td>
+   </tr>
+  </table>
+
+ </body>
+</html>

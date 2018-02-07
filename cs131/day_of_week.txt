@@ -1,0 +1,68 @@
+Day of Week
+This program will accept a date in the format mm/dd/yyyy (Ex. 12/12/1984
+would be December 12, 1984) and will determine the day of the week on 
+that given day.
+
+Input
+What is the date?
+_month_/_day_/_year_
+
+Calculations
+
+To separate _year_ into _century_ and _non_century_:
+
+century = year // 100
+non_century = year % 100
+
+1)  result = non_century // 12 
+
+2)  remainder = non_century % 12
+    result = result + remainder
+
+3)  result = result + (remainder // 4)
+
+4)  result = result % 7 (cast out 7s)
+
+5)  month_adjustment is 0 if it is april or july
+    month_adjustment is 1 if it is january or october
+    month_adjustment is 2 if it is may
+    month_adjustment is 3 if it is august
+    month_adjustment is 4 if it is february, march, or november
+    month_adjustment is 5 if it is june
+    month_adjustment is 6 if it is september or december
+    result = result + month_adjustment
+
+6)  result = (result % 7) + day
+
+7)  century_adjustment is 0 if it is the 20th century
+    century_adjustment is 2 if it is the 19th century
+    century_adjustment is 4 if it is the 18th or 22nd century
+    century_adjustment is 6 if it is the 21st century
+    result = (result % 7) + century_adjustment
+
+8)  if the month is January or February 
+    AND
+    it is a leap year
+    leap_year_adjustment = 1
+        it is a leap year if the non_century year is evenly divisible by
+        4. if the non_century year is 00, the century year must be 
+        evenly divisible by 4 aswell
+    otherwise, leap_year_adjustment = 0
+    result = result - leap_year_adjustment
+    
+9)  if result is less than 0,
+    result = result + 7
+
+10) result = result % 7 (cast out 7s)
+
+If the result is 0 the day is Saturday
+If the result is 1 the day is Sunday
+If the result is 2 the day is Monday
+If the result is 3 the day is Tuesday
+If the result is 4 the day is Wednesday
+If the result is 5 the day is Thursday
+If the result is 6 the day is Friday
+
+Output
+
+"The day of the week on _month_/_day_/_year_ is _result_."
